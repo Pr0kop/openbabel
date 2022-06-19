@@ -104,6 +104,7 @@ set(formats_misc
       cofformat
       crkformat
       cssrformat
+      ctldformat
       dlpolyformat
       exyzformat      
       fastsearchformat
