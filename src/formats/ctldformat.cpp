@@ -98,23 +98,26 @@ namespace OpenBabel
         {
             return
                 "CTLD format\n"
-                "Some comments here, on as many lines as necessay\n"
-                "Write Options e.g. -xf3 \n"
-                "	f# Number of (fictional) levels\n"
-                "	n  Omit (virtual) title\n\n"
+                "CT-LD distinguishes three main fragments that contain triples of RDF.\n\n"
+                "The compound triples contain information about the molecule, e.g., molar refractivity (MR), polar surface area (PSA), logarithm of the octanol–water partition coefficient (LogP) etc. Here, it is possible to embed line notation formats, e.g., SMILES, InChI, InChIKey, etc. \n\n"
+                "Atom triples define the atomic symbol and any mass difference, charge, stereochemistry, and associated hydrogens for each atom. \n\n"
+                "Bond triples define the two atoms connected by the bond, the bond type, and any bond stereochemistry and topology (chain or ring properties) for each bond.\n\n"
+                "Ontology http://ii.uwb.edu.pl/ctld \n\n"
+                "Write Options e.g. -xE \n"
+                "	E enrich informations\n"	
 
-                "Read Options e.g. -as\n"
-                "	s  Consider single bonds only\n"
+                "Read Options e.g. -aS\n"
+                "	S  Sorted file\n"
                 ;
         };
 
         //Optional URL where the file format is specified
-        virtual const char* SpecificationURL() { return ""; }
+        virtual const char* SpecificationURL() { return "http://ii.uwb.edu.pl/ctld"; }
 
         //Optional
         virtual const char* GetMIMEType()
         {
-            return "chemical/x-CTLD";
+            return "chemical/x-ctld";
         };
 
 
@@ -294,7 +297,7 @@ namespace OpenBabel
             writeline = "\n";
             writeStereo = ":stereo";
             writeColon = "";
-            writePrefix = "@prefix : <http://ii.uwb.edu.pl/ctab-ld#> .";
+            writePrefix = "@prefix : <https://ii.uwb.edu.pl/ctld#> .";
             enrichFormula = ":formula";
             enrichMolecularWeight = ":molecularWeight";
             enrichExactMass = ":exactMass";
@@ -326,36 +329,36 @@ namespace OpenBabel
         virtual bool WriteMolecule(OBBase* pOb, OBConversion* pConv)
         {
             rdfType = "<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>";
-            writeCompound = "<http://ii.uwb.edu.pl/ctab-ld#Compound>";
-            writeHasAtom = "<http://ii.uwb.edu.pl/ctab-ld#hasAtom>";
-            writeAtom = "<http://ii.uwb.edu.pl/ctab-ld#Atom>";
-            writeatom = "<http://ii.uwb.edu.pl/ctab-ld#atom>";
-            writexCoordinate = "<http://ii.uwb.edu.pl/ctab-ld#xCoordinate>";
-            writeyCoordinate = "<http://ii.uwb.edu.pl/ctab-ld#yCoordinate>";
-            writezCoordinate = "<http://ii.uwb.edu.pl/ctab-ld#zCoordinate>";
-            writeXMLdecimal = "^^<http://www.w3.org/2001/XMLSchema#decimal>";
-            writeXMLstring = "^^<http://www.w3.org/2001/XMLSchema#string>";
+            writeCompound = "<https://ii.uwb.edu.pl/ctld#Compound>";
+            writeHasAtom = "<https://ii.uwb.edu.pl/ctld#hasAtom>";
+            writeAtom = "<https://ii.uwb.edu.pl/ctld#Atom>";
+            writeatom = "<https://ii.uwb.edu.pl/ctld#atom>";
+            writexCoordinate = "<https://ii.uwb.edu.pl/ctld#xCoordinate>";
+            writeyCoordinate = "<https://ii.uwb.edu.pl/ctld#yCoordinate>";
+            writezCoordinate = "<https://ii.uwb.edu.pl/ctld#zCoordinate>";
+            writeXMLdecimal = "^^<https://www.w3.org/2001/XMLSchema#decimal>";
+            writeXMLstring = "^^<https://www.w3.org/2001/XMLSchema#string>";
             writeEndPoint = " .";
-            writeHasBond = "<http://ii.uwb.edu.pl/ctab-ld#hasBond>";
-            writeBond = "<http://ii.uwb.edu.pl/ctab-ld#Bond>";
-            writeFirstAtom = "<http://ii.uwb.edu.pl/ctab-ld#firstAtom>";
-            writeSecondAtom = "<http://ii.uwb.edu.pl/ctab-ld#secondAtom>";
-            writeType = "<http://ii.uwb.edu.pl/ctab-ld#type>";
-            writeSingle = "<http://ii.uwb.edu.pl/ctab-ld#single>";
-            writeDouble = "<http://ii.uwb.edu.pl/ctab-ld#double>";
-            writeStereo = "<http://ii.uwb.edu.pl/ctab-ld#stereo>";
+            writeHasBond = "<https://ii.uwb.edu.pl/ctld#hasBond>";
+            writeBond = "<https://ii.uwb.edu.pl/ctld#Bond>";
+            writeFirstAtom = "<https://ii.uwb.edu.pl/ctld#firstAtom>";
+            writeSecondAtom = "<https://ii.uwb.edu.pl/ctld#secondAtom>";
+            writeType = "<https://ii.uwb.edu.pl/ctld#type>";
+            writeSingle = "<https://ii.uwb.edu.pl/ctld#single>";
+            writeDouble = "<https://ii.uwb.edu.pl/ctld#double>";
+            writeStereo = "<https://ii.uwb.edu.pl/ctld#stereo>";
             writeline = "";
             writeColon = "\"";
             writePrefix = "";
-            enrichFormula = "<http://ii.uwb.edu.pl/ctab-ld#formula>";
-            enrichMolecularWeight = "<http://ii.uwb.edu.pl/ctab-ld#molecularWeight>";
-            enrichExactMass = "<http://ii.uwb.edu.pl/ctab-ld#exactMass>";
-            enrichLogP = "<http://ii.uwb.edu.pl/ctab-ld#logP>";
-            enrichTpsa = "<http://ii.uwb.edu.pl/ctab-ld#tpsa>";
-            enrichMolecularRefractivity = "<http://ii.uwb.edu.pl/ctab-ld#molecularRefractivity>";
-            enrichSmiles = "<http://ii.uwb.edu.pl/ctab-ld#smiles>";
-            enrichInchi = "<http://ii.uwb.edu.pl/ctab-ld#inchi>";
-            enrichInchiKey = "<http://ii.uwb.edu.pl/ctab-ld#inchikey>";
+            enrichFormula = "<https://ii.uwb.edu.pl/ctld#formula>";
+            enrichMolecularWeight = "<https://ii.uwb.edu.pl/ctld#molecularWeight>";
+            enrichExactMass = "<https://ii.uwb.edu.pl/ctld#exactMass>";
+            enrichLogP = "<https://ii.uwb.edu.pl/ctld#logP>";
+            enrichTpsa = "<https://ii.uwb.edu.pl/ctld#tpsa>";
+            enrichMolecularRefractivity = "<https://ii.uwb.edu.pl/ctld#molecularRefractivity>";
+            enrichSmiles = "<https://ii.uwb.edu.pl/ctld#smiles>";
+            enrichInchi = "<https://ii.uwb.edu.pl/ctld#inchi>";
+            enrichInchiKey = "<https://ii.uwb.edu.pl/ctld#inchikey>";
 
             return CTLDFormat::WriteMolecule(pOb, pConv);
         }
@@ -2105,15 +2108,15 @@ namespace OpenBabel
                                     order = 4;
 
                                 }
-                                else if (BondsInfoType[moleculeIterator][h] == "<http://ii.uwb.edu.pl/ctab-ld#single>") {
+                                else if (BondsInfoType[moleculeIterator][h] == "<https://ii.uwb.edu.pl/ctld#single>") {
                                     order = 1;
 
                                 }
-                                else if (BondsInfoType[moleculeIterator][h] == "<http://ii.uwb.edu.pl/ctab-ld#double>") {
+                                else if (BondsInfoType[moleculeIterator][h] == "<https://ii.uwb.edu.pl/ctld#double>") {
                                     order = 2;
 
                                 }
-                                else if (BondsInfoType[moleculeIterator][h] == "<http://ii.uwb.edu.pl/ctab-ld#aromatic>") {
+                                else if (BondsInfoType[moleculeIterator][h] == "<https://ii.uwb.edu.pl/ctld#aromatic>") {
                                     order = 4;
 
                                 }
