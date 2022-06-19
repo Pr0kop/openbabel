@@ -102,7 +102,7 @@ namespace OpenBabel
                 "The compound triples contain information about the molecule, e.g., molar refractivity (MR), polar surface area (PSA), logarithm of the octanol–water partition coefficient (LogP) etc. Here, it is possible to embed line notation formats, e.g., SMILES, InChI, InChIKey, etc. \n\n"
                 "Atom triples define the atomic symbol and any mass difference, charge, stereochemistry, and associated hydrogens for each atom. \n\n"
                 "Bond triples define the two atoms connected by the bond, the bond type, and any bond stereochemistry and topology (chain or ring properties) for each bond.\n\n"
-                "Ontology http://ii.uwb.edu.pl/ctld \n\n"
+                "Ontology https://ii.uwb.edu.pl/ctld \n\n"
                 "Write Options e.g. -xE \n"
                 "	E enrich informations\n"	
 
@@ -112,7 +112,7 @@ namespace OpenBabel
         };
 
         //Optional URL where the file format is specified
-        virtual const char* SpecificationURL() { return "http://ii.uwb.edu.pl/ctld"; }
+        virtual const char* SpecificationURL() { return "https://ii.uwb.edu.pl/ctld"; }
 
         //Optional
         virtual const char* GetMIMEType()
@@ -269,7 +269,7 @@ namespace OpenBabel
         //Register this format type ID
         TTLFormat()
         {
-            OBConversion::RegisterFormat("ttl", this, "chemical/x-ctld-ttlfile");
+            OBConversion::RegisterFormat("ttl", this, "chemical/x-ctld-ttl");
             OBConversion::RegisterOptionParam("S", this);
             OBConversion::RegisterOptionParam("E", this, OBConversion::OUTOPTIONS);
         }
@@ -321,7 +321,7 @@ namespace OpenBabel
     public:
         NTFormat()
         {
-            OBConversion::RegisterFormat("nt", this, "chemical/x-ctld-ntfile");
+            OBConversion::RegisterFormat("nt", this, "chemical/x-ctld-nt");
             OBConversion::RegisterOptionParam("S", this);
             OBConversion::RegisterOptionParam("E", this, OBConversion::OUTOPTIONS);
         }
